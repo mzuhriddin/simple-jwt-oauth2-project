@@ -1,0 +1,32 @@
+server:
+  port: 80
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            clientId: 387468979890317
+            clientSecret: 1231e6de4ad61ad43b20ea8de5b1378d
+            scope:
+              - email
+              - public_profile
+  mvc:
+    servlet:
+      path: /api
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/product
+    password: 2002
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: always
+jwt:
+  secretKey: SupperKey
+  expireTime: 864000000
