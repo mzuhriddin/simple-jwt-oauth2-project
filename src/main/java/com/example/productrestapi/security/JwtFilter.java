@@ -22,7 +22,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (!request.getRequestURI().startsWith("/api/auth/")) {
+        String requestURI = request.getRequestURI();
+        if (!requestURI.startsWith("/api/auth/") && !requestURI.equals("/api/product")) {
             String token = request.getHeader("Authorization");
             token = token.substring(7); //Bearer so'zini qirqib oldik
             if (jwtProvider.validateToken(token)) {
